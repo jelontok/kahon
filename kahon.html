@@ -5,12 +5,22 @@
     <title>{Title}</title>
     <link rel="shortcut icon" href="{Favicon}">
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
-    <meta name="image:Logo" content=""/>
-    <meta name="text:Footer Left Text" content=""/>
-    <meta name="text:Footer Right Text" content=""/>
+        
     {block:Description}
     <meta name="description" content="{MetaDescription}" />
-    {/block:Description}
+    {/block:Description}        
+    
+    <!-- theme options -->
+    <meta name="color:BackgroundColor" content="#FFFFFF"/>
+    <meta name="color:TextColor" content="#888888"/>
+    <meta name="color:LinkColor" content="#0099FF"/>    
+    <meta name="color:HeaderBackgroundColor" content="#000000"/>
+    <meta name="color:HeaderTextColor" content="#FFFFFF"/>
+    <meta name="color:FooterBorderColor" content="#000000"/>
+    <meta name="image:Logo" content=""/>
+    <meta name="text:Footer Left Text" content=""/>
+    <meta name="text:Footer Right Text" content=""/>    
+    
     <style type="text/css">
         /* reset */
         * {
@@ -20,9 +30,10 @@
         
         /* global */
         body {
+            background-color: {color:BackgroundColor}
             font-size: 100%;
             font-family: sans-serif;
-            color: #888;
+            color: {color:TextColor};
         }
         h1, h2, h3, h4, h5, h6, p, ul, ol, table {
             margin-bottom: 20px;
@@ -33,12 +44,12 @@
         li ul, li ol { margin-bottom: 0; }
         strong { font-weight: bold; }
         em { font-style: italic; }
-        a {color: #0099FF}
+        a {color: {color:LinkColor}}
         
         /* layout */
         #header {
-            background-color: #000;
-            color: #fff;
+            background-color: {color:HeaderBackgroundColor};
+            color: {color:HeaderTextColor};
             margin-bottom: 20px;
         }
         
@@ -46,7 +57,7 @@
         
         #header #logo h1 { margin-bottom: 0; }
         
-        #header #logo h1 a { color:#fff; text-decoration: none; }            
+        #header #logo h1 a { color: {color:HeaderTextColor}; text-decoration: none; }            
         
         .container {
             width: 800px;
@@ -108,13 +119,13 @@
         #posts > li > .caption {
             display: none;
             width: 210px;
-            height: 210px;
+            /*height: 210px;*/
             padding: 20px;
             background-color: rgba(0,0,0,.8);
             color: #fff;
             position: absolute;
             z-index: 9999;
-            top: 0;
+            bottom: 0;
             left: 0;
         }    
         
@@ -131,7 +142,7 @@
         .pagination { padding: 20px 0; }
         
         #footer {
-            border-top: 2px #000 solid;
+            border-top: 2px {color:FooterBorderColor} solid;
             padding: 20px 0;
             font-size: 0.6em;
             width: 790px;
@@ -201,7 +212,7 @@
                             {block:Caption}
                                 <div class="caption">
                                     {Caption}
-                                    <p class="permalink"><a href="{Permalink}">+ {Month} {DayOfMonth}, {Year}  +</a></p>
+                                    <p class="permalink"><a href="{Permalink}">Permalink</a></p>
                                 </div>
                             {/block:Caption}
                         </li>
@@ -212,10 +223,7 @@
                             {Photoset-250}
     
                             {block:Caption}
-                                <div class="caption">
-                                    {Caption}
-                                    <p class="permalink"><a href="{Permalink}">+ {Month} {DayOfMonth}, {Year}  +</a></p>
-                                </div>
+                                <div class="caption">{Caption}</div>
                             {/block:Caption}
                         </li>
                     {/block:Photoset}
